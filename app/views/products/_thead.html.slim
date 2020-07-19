@@ -1,0 +1,16 @@
+thead.thead-light
+  tr
+    th.text-center No.
+    th.text-center 画像
+    th.text-center 商品名
+    th.text-center 値段
+    th.text-center 購入済
+tbody
+  - @products.each do |product|
+    tr
+      td.text-center.align-middle = product.id
+      / td.text-center.align-middle = product.image_url
+      td.text-center.align-middle = image_tag product.image_url, class: 'image'
+      td.text-center.align-middle = product.name
+      td.text-center.align-middle = product.price
+      td.text-center.align-middle = product.is_sold

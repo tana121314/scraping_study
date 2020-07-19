@@ -1,0 +1,17 @@
+/ 一覧ページ
+.container.mt-3
+  
+  / 検索フォーム
+  = form_tag mercari_products_path do
+    = label_tag :検索ワード
+    .form-inline.mb-3
+      = text_field_tag :name, '', class: 'form-control'
+      = submit_tag '検索', class: 'btn btn-primary ml-3'
+
+  / テーブル
+  table.table.table-bordered.table-sm.mb-5
+    == render 'thead' 
+
+  / ページネーション
+  / .float-right
+  /   = paginate @products
