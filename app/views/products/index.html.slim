@@ -1,6 +1,6 @@
 / 一覧ページ
 .container.mt-3
-  
+
   / 検索フォーム
   = form_tag mercari_products_path do
     = label_tag :検索ワード
@@ -11,7 +11,3 @@
   / テーブル
   table.table.table-bordered.table-sm.mb-5
     == render 'thead' 
-
-  / ページネーション
-  / .float-right
-  /   = paginate @products
