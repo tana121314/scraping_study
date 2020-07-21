@@ -6,9 +6,9 @@ thead.thead-light
     th.text-center 値段
     th.text-center 販売状況
 tbody
-  - @products.each.with_index(1) do |product, i|
+  - @products.each do |product|
     tr
-      td.text-center.align-middle = i
+      td.text-center.align-middle = product.product_id
       td.text-center.align-middle = image_tag product.image_url, class: 'image'
       td.text-center.align-middle = product.name
       td.text-center.align-middle = product.price

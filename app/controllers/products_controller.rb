@@ -2,11 +2,11 @@ class ProductsController < ApplicationController
   before_action :destroy_all, only: :mercari
 
   def index
-    @products = Product.all
+    @products = Product.page(params[:page]).per(Product::PER)
   end
 
   def mercari
-    Product.scraping(params[:name])
+    Product.scraping(params[:name], params[:number])
     redirect_to products_path
   end
 
