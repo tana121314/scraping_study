@@ -1,15 +1,6 @@
 thead.thead-light
   tr
-    th.text-center No.
     th.text-center 画像
     th.text-center 商品名
     th.text-center 値段
     th.text-center 販売状況
-tbody
-  - @products.each do |product|
-    tr
-      td.text-center.align-middle = product.product_id
-      td.text-center.align-middle = image_tag product.image_url, class: 'image'
-      td.text-center.align-middle = product.name
-      td.text-center.align-middle = product.price
-      td.text-center.align-middle = product.is_sold ? '販売中' : '売り切れ'

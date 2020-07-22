@@ -1,0 +1,25 @@
+tbody
+  - @products.each do |product|
+
+    / メルカリ
+    - if product.service == 0
+      tr
+        td.text-center.align-middle = image_tag product.image_url, class: 'image'
+        td.text-center.align-middle = product.name.truncate(45)
+        td.text-center.align-middle = product.price
+        td.text-center.align-middle = product.is_sold ? '販売中' : '売り切れ'
+
+    / ヤフオク
+    - elsif product.service == 1 then
+      tr
+        td.text-center.align-middle = image_tag product.image_url, class: 'image'
+        td.text-center.align-middle = product.name.truncate(45)
+        td.text-center.align-middle 
+          = product.price
+          = "（送料別）" if product.shipping?
+          br
+          p style="color: red;" = "即決価格:#{product.summary_price}" if product.summary_price.present?
+        td.text-center.align-middle
+          = "残り#{product.remaining_time}"
+          br
+          = "入札数:#{product.bid_number}"

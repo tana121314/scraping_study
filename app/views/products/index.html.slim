@@ -3,20 +3,28 @@
 
   / 検索フォーム
   .float-left
-    = form_tag mercari_products_path do
+    = form_tag search_products_path do
       .form-inline.mb-3
         = label_tag :検索ワード
-        = text_field_tag :name, '', class: 'form-control mx-3'
+        = text_field_tag :name, params[:keyword], class: 'form-control mx-3'
         = label_tag :取得ページ数
-        = number_field_tag :number, '1', min: 1, class: 'form-control ml-3'
+        = number_field_tag :number, params[:number], min: 1, class: 'form-control mx-3'
+      .form-inline.mb-3
+        = label_tag :検索対象サイト
+        = radio_button_tag :service, '1', params[:service].blank? || params[:service].to_i == 1, class: 'form-control ml-3'
+        = label_tag :service_1, 'メルカリ'
+        = radio_button_tag :service, '2', params[:service].to_i == 2, class: 'form-control ml-3'
+        = label_tag :service_2, 'ヤフオク'
         = submit_tag '検索', class: 'btn btn-primary ml-3'
 
+  / ページネーション
   .float-right
     = paginate @products
 
   / テーブル
-  table.table.table-bordered.table-sm.mb-5
+  table.table.table-bordered.table-striped.table-hover.table-sm.mb-5
     == render 'thead'
+    == render 'tbody'
 
   / ページネーション
   .float-right

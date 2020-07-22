@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get '/' => 'products#index'
   resources :products, only: :index do
     collection do
-      post :mercari
+      post :search
     end
   end
 end
